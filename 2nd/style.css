@@ -1,0 +1,163 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #1f0050, #1f0050c4);
+  color: white;
+}
+
+.footer {
+  margin-top: 10em;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+}
+
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  margin: 1em;
+  padding: 1.5em;
+ 
+}
+.footer-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  color: #fff;
+}
+
+.footer-item {
+  margin: 0.5em 0;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-input {
+  display: flex;
+  margin-top: 1em;
+  border: 3px solid #ff64dd;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-input input {
+  flex: 1;
+  padding: 0.5em;
+  border: none;
+  outline: none;
+  min-width: 0; 
+}
+
+.footer-input button {
+  padding: 0.5em 1em;
+  background: #ff64dd;
+  border: none;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap; 
+}
+
+.news-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1em;
+}
+
+.news-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.news-item p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.footer-link {
+  margin: 0.4em 0;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+.instagram-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.second-row {
+  margin-top: 1em;
+}   
+.instagram-grid img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.line {
+  width: 95%;
+  height: 1px;
+  background-color: #ff64dd;
+  margin: 2em 0;
+}
+.footer-bottom {
+    display: flex;
+    justify-content: space-around;
+  text-align: center;
+  padding-top: 2em;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.footer-bottom a {
+  color: #ff64dd;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .footer {
+  margin-top: 2em;
+}
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+     max-width: 100%; 
+    text-align: center;
+  }
+
+  .footer-input {
+    justify-content: center;
+  }
+
+  .news-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .news-item img {
+    margin-bottom: 0.5em;
+  }
+
+  .instagram-grid {
+    justify-content: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+}
