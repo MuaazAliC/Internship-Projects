@@ -29,4 +29,28 @@ setInterval(() => {
   heroImage.src = data[index].image;
   heroTextH1.textContent = data[index].h1;
   heroTextH2.textContent = data[index].h2;
-}, 3000);
+}, 2500);
+
+const hamburger = document.getElementById('snipped');
+const navLinks = document.getElementById('navLinks');
+
+
+snipped.addEventListener('click', (event) => {
+  event.stopPropagation(); 
+  navLinks.classList.toggle('active');
+});
+
+
+document.querySelectorAll('#navLinks a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+
+
+document.addEventListener('click', (event) => {
+  const isClickInside = navLinks.contains(event.target) || snipped.contains(event.target);
+  if (!isClickInside) {
+    navLinks.classList.remove('active');
+  }
+});

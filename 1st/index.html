@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>W3.CSS Template</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+ <div class="navbar">
+
+  <nav>
+  
+      <!-- Hamburger Icon -->
+    <div class="hamburger" id="hamburger">
+      <div class="home"><p>HOME</p></div>
+     <div class="snipped" id="snipped"> <i class="fa-solid fa-bars" style="color: #ffffff;"></i></div>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+
+      <li><a href="#">HOME</a></li>
+      <li><a href="#section">BAND</a></li>
+      <li><a href="#TOUR">TOUR</a></li>
+      <li><a href="#Con">CONTACT</a></li>
+      <li class="dropdown">
+        <a href="#">MORE ▼</a>
+        <ul class="dropdown-content">
+          <li><a href="#">Merchandise</a></li>
+          <li><a href="#">Extras</a></li>
+          <li><a href="#">Media</a></li>
+        </ul>
+      </li>
+      <li class="search-icon">
+        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+  <div class="hero">
+    <img src="img/1.jpg" alt="Hero Image">
+    <div class="hero-text">
+      <h1>Los Angeles</h1>
+      <h2>We had the best time playing at Venice Beach!</h2>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <section id="section">
+    <h1>THE BAND</h1>
+    <h2 style="position: relative; top: -20px;">We love music</h2>
+    <div class="justify">
+     <div class="jus_text">
+       <p class="justify-text">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+     </div>
+    </div>
+    <ul class="camera_boy">
+      <li>
+        <div>
+          <p>Name</p>
+          <img src="img/5.jpg" alt="Boy with Camera">
+        </div>
+      </li>
+      <li>
+        <div>
+          <p>Name</p>
+          <img src="img/5.jpg" alt="Boy with Camera">
+        </div>
+      </li>
+      <li>
+        <div>
+          <p>Name</p>
+          <img src="img/5.jpg" alt="Boy with Camera">
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <div class="main">
+          <h1>TOUR DATES</h1>
+    <h2>Remember to book your tickets!</h2>
+       <div class="months">
+  
+        <div class="sep bor">  September <span
+               style="background-color: red; color: white; border: 2px solid red;
+               "> Sold
+              Out</span></div>
+        <div class="oct bor">
+             October <span
+              style="background-color: red; color: white; border: 2px solid red; "> Sold
+              Out</span>
+        </div>
+            <div class="november bor">
+                 <div class="mo"> November</div>
+                <div class="small-circle">3</div>
+            </div>
+          
+       </div>
+<div class="card">
+     <div class="card-content">
+          <img src="img/newyork.jpg" alt="" srcset="">
+          <h3 style="padding: 19px;">New York</h3>
+          <p style="padding: 19px;">Fri 27 Nov 2016</p>
+          <p style="padding: 19px; margin-bottom: 13px;">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+          <button class="btn">Buy Ticket</button>
+        </div>
+              <div class="card-content">
+        
+          <img src="img/paris.jpg" alt="" srcset="">
+          <h3 style="padding: 19px;">Paris</h3>
+          <p style="padding: 19px;">Sat 28 Nov 2016</p>
+          <p style="padding: 19px; margin-bottom: 13px;">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+          <button class="btn">Buy Ticket</button>
+        </div> 
+
+         <div class="card-content">
+        
+          <img src="img/sanfran.jpg" alt="" srcset="">
+          <h3 style="padding: 19px;">San Francisco</h3>
+          <p style="padding: 19px;">Sun 29 Nov 2016</p>
+          <p style="padding: 19px; margin-bottom: 13px;">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+          <button class="btn">Buy Ticket</button>
+        </div>
+</div>
+
+    </div>
+    <div style="width: 100%; height: 10em; background-color: black;"></div>
+ 
+
+  <article id="Con">
+    <h1>CONTACT</h1>
+    <h3>Fan? Drop a note!</h3>
+    <div class="contact_us">
+      <div class="our_number box">
+        <ul class="contact-list">
+          <li class="location">Chicago, US</li>
+          <li class="phone">Phone: +00 151515</li>
+          <li class="email">Email: mail@mail.com</li>
+        </ul>
+      </div>
+      <div class="form-grid">
+        <input type="name" name="Name" class="name" placeholder="Name">
+        <input type="email" name="Email" class="name" placeholder="Email">
+        <input type="text" name="Message" id="text" placeholder="Message">
+      <button class="Last_button">SEND</button>
+      </div>
+       
+    </div>
+ 
+  </article>
+
+  <section style="display: flex; justify-content: right; margin: 0;padding: 0;">
+    <div class="large_image">
+      <img src="img/4.jpg" alt="" style="width:100%;">
+    </div>
+  </section>
+
+  <footer>
+    <ul>
+      <li><img src="img/facebook logo.png" alt="logo" class="img-effect"></li>
+      <li><img src="img/insta logo.png" alt="logo" class="img-effect"></li>
+      <li><img src="img/snapchat logo.png" alt="logo" class="img-effect"></li>
+      <li><img src="img/pinert logo.png" alt="logo" class="img-effect"></li>
+      <li><img src="img/twitter logo.png" alt="logo" class="img-effect"></li>
+      <li><img src="img/linked logo.png" alt="logo" class="img-effect"></li>
+    </ul>
+    <p style="display: flex; justify-content: center; margin-bottom: 19vh; margin-top: 4vh;">
+      Powered by <a href="https://www.w3schools.com/w3css/default.asp" class="link" target="_blank">w3.css</a>
+    </p>
+  </footer>
+</body>
+
+</html>
