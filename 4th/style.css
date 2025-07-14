@@ -1,0 +1,192 @@
+
+ * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(255, 254, 248);
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 12px;
+  padding: 12px;
+  justify-content: center;
+}
+
+.side {
+  flex:  280px;
+  max-width: 400px;
+  border: 2px solid rgba(0, 0, 0, 0.178);
+}
+
+.pic {
+  display: grid;
+  width: 100%;
+}
+
+.pic img {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pic p {
+  grid-area: 1 / 1;
+  align-self: end;
+  justify-self: start;
+  margin: 10px;
+  color: black;
+  font-size: 1.5em;
+}
+
+.list {
+  margin: 17px 0 17px 12px;
+}
+
+.list ul {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.line {
+  width: 92%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.151);
+  margin-left: 12px;
+}
+
+.Skills {
+  margin: 17px 0 0 12px;
+}
+
+.Skills p {
+  margin: 17px 0;
+}
+
+.skill-line {
+  width: 93%;
+  height: 15px;
+  border-radius: 16px;
+  border: 2px solid black;
+  text-align: center;
+  color: white;
+}
+
+.one, .two, .three, .four {
+  height: 15px;
+  border-radius: 16px;
+  background-color: rgb(1, 153, 153);
+}
+
+.one { width: 90%; }
+.two { width: 80%; }
+.three { width: 75%; }
+.four { width: 50%; }
+
+.languages {
+  margin: 30px 0 0 12px;
+}
+
+.languages p {
+  margin: 17px 0;
+}
+
+.eng, .spa, .ger {
+  height: 15px;
+  border-radius: 16px;
+  background-color: rgb(1, 153, 153);
+}
+
+.eng { width: 100%; }
+.spa { width: 50%; }
+.ger { width: 30%; }
+
+.end {
+  flex:  500px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.up, .down {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.178);
+}
+
+.innercon {
+  margin: 17px 0 12px 12px;
+}
+
+.innercon h3 {
+  color: rgba(0, 0, 0, 0.664);
+  margin-top: 35px;
+}
+
+.innercon p {
+  margin-top: 17px;
+  margin-bottom: 17px;
+}
+
+.line_pro {
+  width: 96%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.151);
+}
+
+footer {
+  margin-top: 2em;
+  width: 100%;
+  background-color: rgb(1, 153, 153);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+footer ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 4px;
+}
+
+footer ul li:hover {
+  filter: brightness(70%);
+}
+
+footer a {
+  color: white;
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    .main{
+        flex-direction: column;
+    }
+    
+  .side {
+    flex:  100%;
+    max-width: 100%;
+  }
+}
+
+
+
