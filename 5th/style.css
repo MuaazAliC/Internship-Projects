@@ -22,7 +22,7 @@ body {
   left: 0;
   top: 0;
   z-index: 2;
-  transition: left 0.3s ease;
+  transition: left 0.5s ;
 }
 
 #sidebar h2 {
@@ -80,7 +80,11 @@ body {
  
 }
 
-
+#close{
+ position: relative;
+ top: -40px;
+ display: none;
+}
 #main-content {
   margin-left: 320px;
   padding: 20px;
@@ -346,7 +350,15 @@ footer p{
     align-items: center;
     width: 90%;
   }
-
+  #close{
+ position: relative;
+ top: -40px;
+ display: block;
+}
+.nav_btn{
+    margin-top: 3em;
+    width: 90%;
+}
   .lpic, .spic {
     width: 90vw;
     height: auto;
@@ -376,7 +388,15 @@ footer p{
   #sidebar.active {
     left: 0;
   }
-
+.nav_btn{
+    margin-top: 2em;
+    width: 90%;
+}
+  #close{
+ position: relative;
+ top: -40px;
+ display: block;
+}
   .hamburger {
     display: flex;
     position: fixed;
