@@ -41,18 +41,37 @@ body {
   transition: 0.2s;
 }
 
-#sidebar .menu a:hover {
+#sidebar .menu a:hover ,
+#sidebar .menu a.active {
   background-color: white;
   color: black;
+  padding: 5px;
  
 }
 
+.nav_btn{
+    margin-top: 5em;
+    width: 90%;
+}
+
+#btn_def{
+  display: none;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+ height: 30px;
+}
+#btn_def:hover{
+  color: rgb(255, 255, 255);
+  background-color: #f44336;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 
 .hamburger {
   display: none;
   position: fixed;
  width: 100vw;
- height: 10vh;
+ height: 2em;
  background-color: #f44336;
  z-index: 1;
   font-size: 2em;
@@ -302,7 +321,7 @@ footer p{
     margin-right: 4em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 990px) {
   #sidebar {
     left: -320px;
   }
