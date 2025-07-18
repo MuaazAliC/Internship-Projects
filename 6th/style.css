@@ -270,7 +270,7 @@ sup {
   display: flex;
   justify-content: space-between;
  }
- 
+
 .inter{
   margin-top: 1em;
   margin: bottom 1em;
@@ -479,8 +479,8 @@ footer{
 }
 
 .events_add img {
-  width: 70%;
-  height: 7em;
+  width: 13em;
+  height: 8em;
   display: block;
   margin: 0 auto;
 }
@@ -585,5 +585,8 @@ footer{
 .ham_in_con:hover {
   color: black ;
   background-color: white;
+}
+.inter{
+  display: none;
 }
 }
