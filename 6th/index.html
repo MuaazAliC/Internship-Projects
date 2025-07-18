@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Media</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+</head>
+
+<body>
+
+  <nav>
+    <div class="list">
+      <div class="space">
+        <div class="inner">
+          <div class="logo-section logo">
+            <i class="fas fa-home"></i> Logo
+          </div>
+
+          <div class="others logo-section">
+            <i class="fa-solid fa-earth-americas" style="font-size: 30px;"></i>
+          </div>
+
+          <div class="others logo-section">
+            <i class="fa-solid fa-user" style="font-size: 30px;"></i>
+          </div>
+
+          <div class="others logo-section">
+            <i class="fa-solid fa-envelope" style="font-size: 30px;"></i>
+          </div>
+
+          <!-- Bell Notification with Dropdown -->
+          <div class="others logo-section dropdown" onclick="toggleDropdown(event)">
+            <i class="fa-solid fa-bell" style="cursor: pointer; font-size: 30px;">
+              <sup>3</sup>
+            </i>
+            <div id="bellDropdown" class="dropdown-content">
+              <a href="#">One new friend request</a>
+              <a href="#">John Doe posted on your wall</a>
+              <a href="#">Jane likes your post</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pf">
+          <img src="img/2.png" alt="">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section>
+    <div class="main">
+      <div class="first">
+        <div class="profile">
+          <h2>My Profile</h2>
+          <img src="img/1.png" alt="">
+          <div class="line"></div>
+          <ul><i class="fa-solid fa-pen"></i> <span style="margin-left: 12px;">Designer, UI</span></ul>
+          <ul><i class="fa-solid fa-house-chimney"></i> <span style="margin-left: 12px;"> London, UK</span></ul>
+          <ul><i class="fa-solid fa-cake-candles"></i> <span style="margin-left: 12px;">April 1, 1988</span></ul>
+        </div>
+        <div class="sec">
+          <div class="group"><i class="fa-solid fa-circle-notch"
+              style="margin-left: 12px; margin-right: 24px; color: white;"></i> <span>My Groups</span></div>
+          <div class="group"><i class="fa-solid fa-calendar-week"
+              style="margin-left: 12px; margin-right: 24px; color: white;"></i> <span>My Events</span></div>
+          <div class="group"><i class="fa-solid fa-people-group"
+              style="margin-left: 12px; margin-right: 24px; color: white;"></i> <span>My Photos</span></div>
+        </div>
+        <div class="inter">
+          <div class="block">
+            News
+          </div>
+          <div class="block">
+            W3Schools
+          </div>
+          <div class="block">
+            Labels
+          </div>
+          <div class="block">
+            Games
+          </div>
+          <div class="block">
+            Friends
+          </div>
+          <div class="block">
+            Games
+          </div>
+          <div class="block">
+            Friends
+          </div>
+          <div class="block">
+            Food
+          </div>
+          <div class="block">
+            Design
+          </div>
+          <div class="block">
+            Art
+          </div>
+          <div class="block">
+            Photos
+          </div>
+        </div>
+        <div class="message">
+          <h4>Hey!</h4>
+          <p>People are looking at your profile. Find out who.</p>
+        </div>
+      </div>
+      <div class="second">
+        <div class="enter">
+          <h4>Social Media template by w3.css</h4>
+          <input type="text" class="ent">
+          <button class="btn" type="button"> <i class="fa-solid fa-pencil" style="color: white;"></i> <span>Post</span></button>
+
+        </div>
+        <div class="post">
+          <div class="info">
+            <div class="dp">
+              <img src="img/2.png" alt="" srcset="">
+              <h3>John Doe</h3>
+            </div>
+            <div class="time">
+              <h4>1 min</h4>
+            </div>
+          </div>
+          <div class="line line2"></div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </p>
+               <div class="post_image">
+                <div class="img"><img src="post/5.jpg" alt="" srcset=""></div>
+                <div class="img"><img src="post/2.jpg" alt="" srcset=""></div>
+               </div>
+               <button type="button" class="btn like" ><i class="fa-solid fa-thumbs-up  " style="color: #ffffff; margin-right: 6px; font-size: 2em;"></i><span  style="font-size: 2.4em;">Like</span></button>
+               <button type="button" class="btn comment" ><i class="fa-solid fa-comment " style="color: #ffffff; margin-right: 6px; font-size: 2em;"></i> <span style="font-size: 2.4em;">Comment</span></button>
+        </div>
+          
+         <div class="post">
+          <div class="info">
+            <div class="dp">
+              <img src="img/3.png" alt="" srcset="">
+              <h3>Jane Doe</h3>
+            </div>
+            <div class="time">
+              <h4>16 min</h4>
+            </div>
+          </div>
+          <div class="line line2"></div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </p>
+               
+               
+               <button type="button" class="btn like" ><i class="fa-solid fa-thumbs-up  " style="color: #ffffff; margin-right: 6px; font-size: 2em;"></i><span  style="font-size: 2.4em;">Like</span></button>
+               <button type="button" class="btn comment" ><i class="fa-solid fa-comment " style="color: #ffffff; margin-right: 6px; font-size: 2em;"></i> <span style="font-size: 2.4em;">Comment</span></button>
+        </div>
+          
+         <div class="post">
+          <div class="info">
+            <div class="dp">
+              <img src="img/2.png" alt="" srcset="">
+              <h3>John Doe</h3>
+            </div>
+            <div class="time">
+              <h4>1 min</h4>
+            </div>
+          </div>
+          <div class="line line2"></div>
+          <h2 style="margin: 12px; ">Have you ever seen this ?</h2>
+               <div class="post_image large">
+              
+               <img src="post/6.jpg" alt="" srcset="">  
+               
+
+               </div>
+                 <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </p>
+               <button type="button" class="btn like" ><i class="fa-solid fa-thumbs-up  " style="color: #ffffff; margin-right: 6px; font-size: 2em;"></i><span  style="font-size: 2.4em;">Like</span></button>
+               <button type="button" class="btn comment" ><i class="fa-solid fa-comment " style="color: #ffffff; margin-right: 6px; font-size: 2em;"></i> <span style="font-size: 2.4em;">Comment</span></button>
+        </div>
+
+
+      </div>
+      <div class="third">
+        <div class="events_add">
+          <h3>Upcoming Events:</h3>
+          <img src="post/4.jpg" alt="">
+          <h4>Holiday</h4>
+          <h5>Friday 15:00</h5>
+          <button type="button" class="info3">Info</button>
+        </div>
+       <div class="events_add friend_request">
+          <h3>Friend Request</h3>
+          <img src="img/4.png" alt="">
+          <h5>Jane Doe</h5>
+         <div class="choi"> 
+          <div class="choice1"><button type="button" class="button btn yes" ><i class="fa-solid fa-check" style="color: #ffffff;"></i></button></div>
+         <div class="choice2"> <button type="button" class="button btn no" ><i class="fa-solid fa-x" style="color: #ffffff;"></i></button></div></div>
+        </div>
+        <div class="ads"></div>
+        <div class="spider"></div>
+      </div>
+    </div>
+  </section>
+
+      <footer>
+        <div class="part1"> <h2>Footer</h2></div>
+        <div class="part2"> <h2>Our site <a href="https://muhammadmuaazali.github.io/website/" target="_blank">Code With Muaaz</a></h2></div>
+      </footer>
+
+</body>
+
+</html>
