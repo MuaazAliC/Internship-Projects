@@ -48,10 +48,17 @@
         <div class="pf">
           <img src="img/2.png" alt="">
         </div>
+        <div class="hamburger" id="hamburger"><i class="fa-solid fa-bars" style="color: white; font-size: 3.5em; margin-right: 12px;"></i>
+        </div>
       </div>
     </div>
   </nav>
-
+<div class="ham_con" id="ham_con">
+      <div class="ham_in_con" id="Link1">Link 1</div>
+      <div class="ham_in_con" id="Link2">Link2</div>
+      <div class="ham_in_con" id="Link3">Link3</div>
+</div>        
+<script src="script.js"></script>
   <section>
     <div class="main">
       <div class="first">
@@ -65,11 +72,32 @@
         </div>
         <div class="sec">
           <div class="group"><i class="fa-solid fa-circle-notch"
-              style="margin-left: 12px; margin-right: 24px; color: white;"></i> <span>My Groups</span></div>
+              style="margin-left: 12px; margin-right: 24px; color: white;"></i> <span>My Groups</span>
+               
+            </div>
+            <div class="input" id="input1">
+                <input type="text" name="" id="" placeholder="Enter Text ">
+               </div>
           <div class="group"><i class="fa-solid fa-calendar-week"
-              style="margin-left: 12px; margin-right: 24px; color: white;"></i> <span>My Events</span></div>
+              style="margin-left: 12px; margin-right: 24px; color: white;"></i> <span>My Events</span>
+            
+            </div>
+            <div class="input" id="input2">
+                <input type="text" name="" id="" placeholder="Enter Text ">
+               </div>
+
           <div class="group"><i class="fa-solid fa-people-group"
-              style="margin-left: 12px; margin-right: 24px; color: white;"></i> <span>My Photos</span></div>
+              style="margin-left: 12px; margin-right: 24px; color: white;"></i> <span>My Photos</span>
+            
+            </div>
+            <div class="gallery" id="gallery">
+               <img src="post/4.jpg" alt="">
+               <img src="post/5.jpg" alt="">
+               <img src="post/3.jpg" alt="">
+               <img src="post/6.jpg" alt="">
+               <img src="post/2.jpg" alt="" class="last_img">
+               <img src="post/1.jpg" alt="" class="last_img">
+            </div>
         </div>
         <div class="inter">
           <div class="block">
@@ -107,7 +135,7 @@
           </div>
         </div>
         <div class="message">
-          <h4>Hey!</h4>
+         <div class="msg">  <h4>Hey!</h4> <i class="fa-solid fa-x" style="margin:1em;" id="close"></i></div>
           <p>People are looking at your profile. Find out who.</p>
         </div>
       </div>
@@ -199,19 +227,30 @@
           <img src="post/4.jpg" alt="">
           <h4>Holiday</h4>
           <h5>Friday 15:00</h5>
-          <button type="button" class="info3">Info</button>
+          <button type="button" class="info3" style="cursor: pointer;">Info</button>
         </div>
-       <div class="events_add friend_request">
-          <h3>Friend Request</h3>
-          <img src="img/4.png" alt="">
-          <h5>Jane Doe</h5>
-         <div class="choi"> 
-          <div class="choice1"><button type="button" class="button btn yes" ><i class="fa-solid fa-check" style="color: #ffffff;"></i></button></div>
-         <div class="choice2"> <button type="button" class="button btn no" ><i class="fa-solid fa-x" style="color: #ffffff;"></i></button></div></div>
+    <div class="events_add friend_request">
+  <h3>Friend Request</h3>
+  <img src="img/4.png" alt="">
+  <h5>Jane Doe</h5>
+
+  <div class="btn-group">
+    <button type="button" class="yes">
+      <i class="fa-solid fa-check" style="color: #ffffff;"></i>
+    </button>
+    <button type="button" class="no">
+      <i class="fa-solid fa-x" style="color: #ffffff;"></i>
+    </button>
+  </div>
+</div>
+
+        <div class="ads">
+         <h1>ADS</h1> 
         </div>
-        <div class="ads"></div>
-        <div class="spider"></div>
-      </div>
+        <div class="spider">
+          <i class="fa-solid fa-spider" style="font-size: 3em;"></i>
+        </div>
+      
     </div>
   </section>
 
