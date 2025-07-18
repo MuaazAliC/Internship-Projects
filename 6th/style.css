@@ -20,6 +20,25 @@ nav {
   z-index: 1;
   display: flex;
 }
+.ham_con{
+  margin-top: 4em;
+  background-color:  #4D636F;
+}
+.ham_in_con{
+  border: 2px solid black;
+  color: white;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 1.4em;
+ 
+}
+.ham_con{
+   display: none;
+}
+#link1 , #link2 , #link3{
+   display: none;
+}
 
 .logo-section {
   background-color: #3f515d;
@@ -88,6 +107,10 @@ sup {
 
 .others:hover i {
   color: black !important;
+}
+
+.hamburger{
+  display: none;
 }
 
 .pf {
@@ -208,7 +231,46 @@ sup {
   height: auto;
   background-color:#4D636F;
 }
+.sec:hover {
+  cursor: pointer;
+}
+.input{
+    display: none;
+}
 
+.gallery{
+
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  justify-content: space-around;
+  display: none;
+
+}
+
+.gallery img {
+  margin-top: 12px;
+  width: 47%;
+  height: 47%;
+}
+.last_img{
+  margin-bottom: 12px;
+}
+ .input input{
+   display: flex;
+  align-items: center;
+  color: white;
+  width: 100%;
+  height: 3em;
+  border: 1px solid black;
+ }
+
+ .msg{
+  display: flex;
+  justify-content: space-between;
+ }
+ 
 .inter{
   margin-top: 1em;
   margin: bottom 1em;
@@ -231,8 +293,8 @@ border: 2px solid black;
 }
 .inter p{
     font-weight: 300;
-    
 }
+
 .message{
   margin-top: 1em;
   width: 100%;
@@ -450,13 +512,53 @@ footer{
   margin-top: 1em;
 }
 
-.yes{
+.no {
   background-color: rgba(255, 0, 0, 0.63);
-  width: 40%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+ 
 }
-.choi{
-
+ .btn-group {
   display: flex;
+  justify-content: center; 
+}
+
+ .btn-group button {
+ width: 7em;
+}
+.yes{
+  background-color: rgba(0, 128, 0, 0.685);
+}
+.yes:hover, .no:hover {
+    background-color: #E0E0E0;
+    cursor: pointer;
+
+}
+.yes:hover i, .no:hover i {
+   color: black !important;
+
+}
+
+.ads{
+  margin-top: 1em;
+      width: 100%;
+      border: 2px solid black;
+      min-height: 17vh;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+.spider{
+  margin-top: 1em;
+      width: 100%;
+      border: 2px solid black;
+      min-height: 30vh;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 }
 /* Responsive */
 @media (max-width: 1024px) {
@@ -468,4 +570,20 @@ footer{
     width: 100%;
     margin-bottom: 1em;
   }
+  .others,.pf {
+ display: none;
+}
+.hamburger{
+  display: block;
+}
+.hamburger:hover{
+  background-color: white;
+}
+.hamburger:hover i{
+  color: black !important;
+}
+.ham_in_con:hover {
+  color: black ;
+  background-color: white;
+}
 }
