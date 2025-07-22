@@ -18,11 +18,6 @@ const swiper = new Swiper('.swiper', {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
-
-  
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
    slidesPerView: 1,
   spaceBetween: 10,
   
@@ -39,12 +34,12 @@ const swiper = new Swiper('.swiper', {
     },
     
     640: {
-      slidesPerView: 5,
+      slidesPerView: 4,
       spaceBetween: 30
     }
   },
    autoplay: {
-   delay: 1000,
+   delay: 1300,
  },
 });
 
