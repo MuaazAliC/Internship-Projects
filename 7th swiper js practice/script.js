@@ -1,11 +1,6 @@
 const swiper = new Swiper('.swiper', {
-  
-  
+   
   loop: true,
-
-  
-
-
 
       effect: "coverflow",
       grabCursor: true,
@@ -18,9 +13,7 @@ const swiper = new Swiper('.swiper', {
         modifier: 1,
         slideShadows: true,
       },
-     
 
-  
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
