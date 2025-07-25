@@ -7,8 +7,8 @@ let container = document.querySelector(".to_show");
 let numberContainer = document.querySelector(".change");
 
 let totalBoxes = 20;
-let showPerClick = 2;
-let currentPage = 0; 
+let showPerClick = 3;
+let currentPage = 0;
 
 function showBoxes(pageNumber) {
   container.innerHTML = "";
@@ -59,7 +59,27 @@ function showBoxes(pageNumber) {
 function showButtons(currentPage) {
   numberContainer.innerHTML = "";
   const totalPages = Math.ceil(totalBoxes / showPerClick);
+ 
+  
+  const prevBtn = document.createElement("button");
+  prevBtn.className = "previous";
+  prevBtn.innerHTML = "PREVIOUS";
+  prevBtn.style.marginRight = "10px";
 
+  if (currentPage === 0) {
+    prevBtn.style.opacity = "0.7";
+    prevBtn.style.pointerEvents = "none";
+  } else {
+    prevBtn.addEventListener("click", () => {
+      currentPage--;
+      showBoxes(currentPage);
+      showButtons(currentPage);
+    });
+  }
+
+  numberContainer.appendChild(prevBtn); 
+
+  
   function createButton(page) {
     const btn = document.createElement("button");
     btn.className = "num";
@@ -87,7 +107,7 @@ function showButtons(currentPage) {
   }
 
   const pageRange = 1;
-  const totalPagesToShow = Math.ceil(totalBoxes / showPerClick);
+  const totalPagesToShow = totalPages;
   const startRange = Math.max(1, currentPage - pageRange);
   const endRange = Math.min(totalPagesToShow - 2, currentPage + pageRange);
 
@@ -99,24 +119,26 @@ function showButtons(currentPage) {
   }
 
   if (endRange < totalPagesToShow - 2) createDots();
-
   if (totalPagesToShow > 1) createButton(totalPagesToShow - 1);
 
   
-  if (currentPage < totalPagesToShow - 1) {
-    const nextBtn = document.createElement("button");
-    nextBtn.className = "next";
-    nextBtn.textContent = "Next ->";
-    nextBtn.style.marginLeft = "10px";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "next";
+  nextBtn.textContent = "NEXT";
+  nextBtn.style.marginLeft = "10px";
 
+  if (currentPage === totalPages - 1) {
+    nextBtn.style.opacity = "0.7";
+    nextBtn.style.pointerEvents = "none";
+  } else {
     nextBtn.addEventListener("click", () => {
       currentPage++;
       showBoxes(currentPage);
       showButtons(currentPage);
     });
-
-    numberContainer.appendChild(nextBtn);
   }
+
+  numberContainer.appendChild(nextBtn);
 }
 
 
