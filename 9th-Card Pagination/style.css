@@ -107,3 +107,19 @@ body {
     color: white;
     transform: scale(1.1);
 }
+
+.change button {
+  padding: 6px 10px;
+  margin: 2px;
+  border: none;
+  background-color: lightgray;
+  cursor: pointer;
+  border-radius: 50%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.change button:hover {
+  background-color: #888;
+  color: white;
+}
