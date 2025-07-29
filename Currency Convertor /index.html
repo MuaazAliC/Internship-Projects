@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Currency Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #0d47a1;
+      margin-bottom: 20px;
+    }
+
+    select, input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Currency Converter</h1>
+
+  <input type="number" id="amount" placeholder="Enter amount" />
+  <br>
+
+  <select id="fromCurrency">
+    <option value="USD">USD</option>
+    <option value="PKR">PKR</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+    <option value="INR">INR</option>
+    <option value="CAD">CAD</option>
+    <option value="AUD">AUD</option>
+  </select>
+
+  <span>to</span>
+
+  <select id="toCurrency">
+    <option value="USD">USD</option>
+    <option value="PKR">PKR</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+    <option value="INR">INR</option>
+    <option value="CAD">CAD</option>
+    <option value="AUD">AUD</option>
+  </select>
+
+  <br>
+  <button onclick="convertCurrency()">Convert</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function convertCurrency() {
+      const amount = parseFloat(document.getElementById("amount").value);
+      const fromCurrency = document.getElementById("fromCurrency").value;
+      const toCurrency = document.getElementById("toCurrency").value;
+
+      if (!amount || amount <= 0) {
+        alert("Please enter a valid amount.");
+        return;
+      }
+
+      const url = `https://v6.exchangerate-api.com/v6/e14619ddb11ef290e0237e9f/latest/${fromCurrency}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.result !== "success") {
+          throw new Error("Failed to fetch exchange rates");
+        }
+
+        const rate = data.conversion_rates[toCurrency];
+        const converted = (amount * rate).toFixed(2);
+
+        document.getElementById("result").innerText =
+          `${amount} ${fromCurrency} = ${converted} ${toCurrency}`;
+      } catch (error) {
+        document.getElementById("result").innerText = "Error fetching rates.";
+        console.error(error);
+      }
+    }
+  </script>
+
+</body>
+</html>
