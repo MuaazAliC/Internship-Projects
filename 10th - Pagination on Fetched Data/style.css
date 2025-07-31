@@ -4,61 +4,12 @@ body {
   margin: 0;
   padding: 20px;
 }
+
 h1 {
   text-align: center;
   margin-bottom: 20px;
 }
-.controls {
-  margin: 3em auto 1em;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.controls button {
-  background-color: #00b7ff;
-  color: white;
-  font-size: 1.1em;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
 
-.controls button:hover {
-  background-color: #009dd1;
-  transform: scale(1.05);
-}
-.controls button:disabled {
-  background-color: #0000009f;
-  transform: scale(1.05);
-  cursor: not-allowed;
-}
-.pagination {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-.pagination button {
-  padding: 8px 12px;
-  border: none;
-  background-color: #ff0202;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-.pagination button:hover {
-  background-color: #ff8a8a;
-  transform: scale(1.05);
-}
-.pagination button.active {
-  background-color: #4CAF50;
-  color: white;
-  font-weight: bold;
-}
 #data-container {
   display: flex;
   flex-wrap: wrap;
@@ -79,20 +30,89 @@ h1 {
   height: 200px;
   object-fit: cover;
 }
+
 .box .content {
   padding: 15px;
 }
+
 .box .content h3 {
   margin: 0 0 10px;
   font-size: 18px;
 }
+
 .box .content p {
   margin: 5px 0;
   font-size: 14px;
 }
-#pagination-numbers {
+
+/* Pagination wrapper holding both controls and numbers in one line */
+.pagination-wrapper {
   display: flex;
-  gap: 6px;
   justify-content: center;
-  margin-top: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+.controls , .pagination{
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.controls{ margin-top: 3em;}
+/* Common styles for all buttons */
+.controls button,
+.pagination button {
+  width: 50px;
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Prev/Next button styling */
+.controls button {
+  background-color: #707070;
+  color: white;
+}
+
+.controls button:hover {
+  background-color: #009dd1;
+  transform: scale(1.05);
+}
+
+.controls button:disabled {
+  background-color: #0000001f;
+  color: #aaa;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Numbered page button styling */
+.pagination button {
+  background-color: white;
+  color: black;
+}
+
+.pagination button:hover {
+  background-color: #36a1f8;
+  color: white;
+  transform: scale(1.05);
+}
+
+.pagination button.active {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+#number{
+  margin: 2em;
 }
