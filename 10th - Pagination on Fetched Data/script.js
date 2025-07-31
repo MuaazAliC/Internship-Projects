@@ -87,7 +87,7 @@ if (startPage > 2) {
   paginationNumbers.appendChild(firstBtn);
 
   const dots = document.createElement("span");
-  dots.textContent = "...";
+  dots.textContent = " . . . . ";
   paginationNumbers.appendChild(dots);
 } else if (startPage === 2) {
 
@@ -115,7 +115,7 @@ for (let i = startPage; i <= endPage; i++) {
 
 if (endPage < totalPages - 1) {
   const dots = document.createElement("span");
-  dots.textContent = ".....";
+  dots.textContent = " . . . . ";
   paginationNumbers.appendChild(dots);
 
   const lastBtn = document.createElement("button");
@@ -146,6 +146,5 @@ nextBtn.addEventListener("click", () => {
     fetchData(nextPageUrl);
   }
 });
-
 
 fetchData();
