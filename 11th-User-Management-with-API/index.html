@@ -9,33 +9,44 @@
 </head>
 <body>
   <div class="main">
-   
     <div class="innercontainer">
-      <h2><i class="fa-solid fa-user-plus"></i> User Form</h2>
-      <form id="userForm">
-        <input type="text" id="name" placeholder="Enter Name" required />
-        <input type="email" id="email" placeholder="Enter Email" required />
-        <button type="submit">Add User</button>
-      </form>
 
-      <button id="showUpdateFormBtn" style="background-color: rgba(88, 88, 18, 0.945);">Update User</button>
+      <button id="showAddFormBtn">
+        <i class="fa-solid fa-user-plus"></i> Add User
+      </button>
+
+      <div id="addForm" style="display: none;">
+        <h2><i class="fa-solid fa-user-plus"></i> User Form</h2>
+        <form id="userForm">
+          <input type="text" id="name" placeholder="Enter Name" required />
+          <input type="email" id="email" placeholder="Enter Email" required />
+          <button type="submit">Add User</button>
+        </form>
+      </div>
+
+      <button id="showUpdateFormBtn" class="update-btn">
+        <i class="fa-solid fa-user-check"></i> Update User
+      </button>
       <div id="updateForm" style="display: none;">
-        <h3>Update User</h3>
+        <h3><i class="fa-solid fa-user-check"></i> Update User</h3>
         <input type="number" id="updateId" placeholder="Enter ID to update" required />
         <input type="text" id="updateName" placeholder="Enter New Name" />
+        <h3 style="text-align: center;">OR</h3>
         <input type="email" id="updateEmail" placeholder="Enter New Email" />
-        <button onclick="updateUser()" style="background-color:  rgba(88, 88, 18, 0.945);">Update</button>
+        <button onclick="updateUser()" class="update-btn">Update</button>
       </div>
 
-      <button id="showDeleteFormBtn" style="background-color: red; color: white;">Delete User</button>
+      <button id="showDeleteFormBtn" class="delete-toggle-btn">
+        <i class="fa-solid fa-user-minus"></i> Delete User
+      </button>
       <div id="deleteForm" style="display: none;">
-        <h3>Delete User</h3>
+        <h3><i class="fa-solid fa-user-minus"></i> Delete User</h3>
         <input type="number" id="deleteId" placeholder="Enter ID to delete" required />
-        <button onclick="deleteUser()" style="background-color: red; color: white;">Delete</button>
+        <button onclick="deleteUser()" class="delete_btn">Delete</button>
       </div>
+
     </div>
 
-   
     <div class="innercontainer">
       <h2><i class="fa-solid fa-database"></i> User Data</h2>
       <div id="result">
@@ -44,6 +55,6 @@
     </div>
   </div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
