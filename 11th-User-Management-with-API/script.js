@@ -1,10 +1,10 @@
- const form = document.getElementById('userForm');
+const form = document.getElementById('userForm');
 const result = document.getElementById('result');
 const url = 'https://jsonplaceholder.typicode.com/posts';
 
 let users = [];
 let userIdCounter = 1;
-
+let availableIds = []; 
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -16,7 +16,10 @@ form.addEventListener('submit', async (e) => {
 
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
-  const userData = { id: userIdCounter, name, email };
+
+  const newId = availableIds.length > 0 ? availableIds.shift() : userIdCounter++;
+
+  const userData = { id: newId, name, email };
 
   try {
     const res = await fetch(url, {
@@ -26,7 +29,7 @@ form.addEventListener('submit', async (e) => {
     });
 
     const data = await res.json();
-    data.id = userIdCounter++;
+    data.id = newId;
     users.push(data);
 
     displayUsers();
@@ -35,7 +38,6 @@ form.addEventListener('submit', async (e) => {
     result.innerHTML = `Error: ${err.message}`;
   }
 });
-
 
 function displayUsers() {
   result.innerHTML = `<h3>Stored Data</h3>`;
@@ -49,7 +51,6 @@ function displayUsers() {
   });
 }
 
-
 const updateForm = document.getElementById('updateForm');
 const showUpdateFormBtn = document.getElementById('showUpdateFormBtn');
 
@@ -57,14 +58,12 @@ showUpdateFormBtn.addEventListener('click', () => {
   updateForm.style.display = updateForm.style.display === 'none' ? 'block' : 'none';
 });
 
-
 const deleteForm = document.getElementById('deleteForm');
 const showDeleteFormBtn = document.getElementById('showDeleteFormBtn');
 
 showDeleteFormBtn.addEventListener('click', () => {
   deleteForm.style.display = deleteForm.style.display === 'none' ? 'block' : 'none';
 });
-
 
 async function updateUser() {
   const id = parseInt(document.getElementById('updateId').value);
@@ -99,7 +98,6 @@ async function updateUser() {
     users[userIndex] = { ...existingUser, ...updatedData };
     displayUsers();
 
-    
     updateForm.style.display = 'none';
     document.getElementById('updateId').value = '';
     document.getElementById('updateName').value = '';
@@ -108,7 +106,6 @@ async function updateUser() {
     result.innerHTML = `Error: ${err.message}`;
   }
 }
-
 
 function deleteUser() {
   const id = parseInt(document.getElementById('deleteId').value);
@@ -123,14 +120,16 @@ function deleteUser() {
     return;
   }
 
+  
+  availableIds.push(users[index].id);
+  availableIds.sort((a, b) => a - b); 
+
   users.splice(index, 1);
   displayUsers();
 
-  
   document.getElementById('deleteId').value = '';
   deleteForm.style.display = 'none';
 }
-
 
 window.updateUser = updateUser;
 window.deleteUser = deleteUser;
