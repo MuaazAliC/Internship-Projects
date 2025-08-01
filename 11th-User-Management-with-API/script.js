@@ -5,6 +5,31 @@ const url = 'https://jsonplaceholder.typicode.com/posts';
 let users = [];
 let userIdCounter = 1;
 
+
+const addForm = document.getElementById('addForm');
+const showAddFormBtn = document.getElementById('showAddFormBtn');
+
+showAddFormBtn.addEventListener('click', () => {
+  addForm.style.display = addForm.style.display === 'none' ? 'block' : 'none';
+});
+
+
+const updateForm = document.getElementById('updateForm');
+const showUpdateFormBtn = document.getElementById('showUpdateFormBtn');
+
+showUpdateFormBtn.addEventListener('click', () => {
+  updateForm.style.display = updateForm.style.display === 'none' ? 'block' : 'none';
+});
+
+
+const deleteForm = document.getElementById('deleteForm');
+const showDeleteFormBtn = document.getElementById('showDeleteFormBtn');
+
+showDeleteFormBtn.addEventListener('click', () => {
+  deleteForm.style.display = deleteForm.style.display === 'none' ? 'block' : 'none';
+});
+
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -34,8 +59,6 @@ form.addEventListener('submit', async (e) => {
     const data = await res.json();
     data.id = newId;
     users.push(data);
-
-    
     users.sort((a, b) => a.id - b.id);
 
     displayUsers();
@@ -62,20 +85,6 @@ function displayUsers() {
       </div>`;
   });
 }
-
-const updateForm = document.getElementById('updateForm');
-const showUpdateFormBtn = document.getElementById('showUpdateFormBtn');
-
-showUpdateFormBtn.addEventListener('click', () => {
-  updateForm.style.display = updateForm.style.display === 'none' ? 'block' : 'none';
-});
-
-const deleteForm = document.getElementById('deleteForm');
-const showDeleteFormBtn = document.getElementById('showDeleteFormBtn');
-
-showDeleteFormBtn.addEventListener('click', () => {
-  deleteForm.style.display = deleteForm.style.display === 'none' ? 'block' : 'none';
-});
 
 async function updateUser() {
   const id = parseInt(document.getElementById('updateId').value);
@@ -134,12 +143,11 @@ function deleteUser() {
 
   users.splice(index, 1);
 
-  
   for (let i = index; i < users.length; i++) {
     users[i].id -= 1;
   }
 
-  userIdCounter--; 
+  userIdCounter--;
   users.sort((a, b) => a.id - b.id);
 
   displayUsers();
