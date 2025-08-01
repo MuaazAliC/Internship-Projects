@@ -13,14 +13,12 @@ showAddFormBtn.addEventListener('click', () => {
   addForm.style.display = addForm.style.display === 'none' ? 'block' : 'none';
 });
 
-
 const updateForm = document.getElementById('updateForm');
 const showUpdateFormBtn = document.getElementById('showUpdateFormBtn');
 
 showUpdateFormBtn.addEventListener('click', () => {
   updateForm.style.display = updateForm.style.display === 'none' ? 'block' : 'none';
 });
-
 
 const deleteForm = document.getElementById('deleteForm');
 const showDeleteFormBtn = document.getElementById('showDeleteFormBtn');
@@ -63,10 +61,12 @@ form.addEventListener('submit', async (e) => {
 
     displayUsers();
     form.reset();
+    addForm.style.display = 'none'; 
   } catch (err) {
     result.innerHTML = `Error: ${err.message}`;
   }
 });
+
 
 function displayUsers() {
   result.innerHTML = `<h3>Stored Data</h3>`;
@@ -78,13 +78,14 @@ function displayUsers() {
 
   users.forEach(user => {
     result.innerHTML += `
-      <div class="user" style="background:#eef2f4; padding: 10px; margin: 10px 0; border-radius: 8px;">
+      <div class="user">
         <strong>ID:</strong> ${user.id}<br>
         <strong>Name:</strong> ${user.name}<br>
         <strong>Email:</strong> ${user.email}
       </div>`;
   });
 }
+
 
 async function updateUser() {
   const id = parseInt(document.getElementById('updateId').value);
@@ -128,6 +129,7 @@ async function updateUser() {
   }
 }
 
+
 function deleteUser() {
   const id = parseInt(document.getElementById('deleteId').value);
   if (!id) {
@@ -155,6 +157,7 @@ function deleteUser() {
   document.getElementById('deleteId').value = '';
   deleteForm.style.display = 'none';
 }
+
 
 window.updateUser = updateUser;
 window.deleteUser = deleteUser;
