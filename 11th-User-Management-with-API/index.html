@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Management with API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main">
+   
+    <div class="innercontainer">
+      <h2><i class="fa-solid fa-user-plus"></i> User Form</h2>
+      <form id="userForm">
+        <input type="text" id="name" placeholder="Enter Name" required />
+        <input type="email" id="email" placeholder="Enter Email" required />
+        <button type="submit">Add User</button>
+      </form>
+
+      <button id="showUpdateFormBtn" style="background-color: rgba(88, 88, 18, 0.945);">Update User</button>
+      <div id="updateForm" style="display: none;">
+        <h3>Update User</h3>
+        <input type="number" id="updateId" placeholder="Enter ID to update" required />
+        <input type="text" id="updateName" placeholder="Enter New Name" />
+        <input type="email" id="updateEmail" placeholder="Enter New Email" />
+        <button onclick="updateUser()" style="background-color:  rgba(88, 88, 18, 0.945);">Update</button>
+      </div>
+
+      <button id="showDeleteFormBtn" style="background-color: red; color: white;">Delete User</button>
+      <div id="deleteForm" style="display: none;">
+        <h3>Delete User</h3>
+        <input type="number" id="deleteId" placeholder="Enter ID to delete" required />
+        <button onclick="deleteUser()" style="background-color: red; color: white;">Delete</button>
+      </div>
+    </div>
+
+   
+    <div class="innercontainer">
+      <h2><i class="fa-solid fa-database"></i> User Data</h2>
+      <div id="result">
+        <h3>Stored Data</h3>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
