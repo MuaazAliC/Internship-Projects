@@ -4,7 +4,6 @@ const url = 'https://jsonplaceholder.typicode.com/posts';
 
 let users = [];
 let userIdCounter = 1;
-let availableIds = []; 
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -14,11 +13,15 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
 
-  const newId = availableIds.length > 0 ? availableIds.shift() : userIdCounter++;
+  if (!name || !email) {
+    alert("Please enter both name and email.");
+    return;
+  }
 
+  const newId = userIdCounter++;
   const userData = { id: newId, name, email };
 
   try {
@@ -32,6 +35,9 @@ form.addEventListener('submit', async (e) => {
     data.id = newId;
     users.push(data);
 
+    
+    users.sort((a, b) => a.id - b.id);
+
     displayUsers();
     form.reset();
   } catch (err) {
@@ -41,9 +47,15 @@ form.addEventListener('submit', async (e) => {
 
 function displayUsers() {
   result.innerHTML = `<h3>Stored Data</h3>`;
+
+  if (users.length === 0) {
+    result.innerHTML += `<p>No users available.</p>`;
+    return;
+  }
+
   users.forEach(user => {
     result.innerHTML += `
-      <div class="user">
+      <div class="user" style="background:#eef2f4; padding: 10px; margin: 10px 0; border-radius: 8px;">
         <strong>ID:</strong> ${user.id}<br>
         <strong>Name:</strong> ${user.name}<br>
         <strong>Email:</strong> ${user.email}
@@ -67,8 +79,8 @@ showDeleteFormBtn.addEventListener('click', () => {
 
 async function updateUser() {
   const id = parseInt(document.getElementById('updateId').value);
-  const name = document.getElementById('updateName').value;
-  const email = document.getElementById('updateEmail').value;
+  const name = document.getElementById('updateName').value.trim();
+  const email = document.getElementById('updateEmail').value.trim();
 
   if (!id) {
     alert("Please enter a valid ID to update.");
@@ -84,18 +96,18 @@ async function updateUser() {
   const existingUser = users[userIndex];
   const updatedData = {
     name: name || existingUser.name,
-    email: email || existingUser.email,
+    email: email || existingUser.email
   };
 
   try {
-    const res = await fetch(`${url}/${id}`, {
+    await fetch(`${url}/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedData),
+      body: JSON.stringify(updatedData)
     });
 
-    const data = await res.json();
     users[userIndex] = { ...existingUser, ...updatedData };
+    users.sort((a, b) => a.id - b.id);
     displayUsers();
 
     updateForm.style.display = 'none';
@@ -120,11 +132,16 @@ function deleteUser() {
     return;
   }
 
-  
-  availableIds.push(users[index].id);
-  availableIds.sort((a, b) => a - b); 
-
   users.splice(index, 1);
+
+  
+  for (let i = index; i < users.length; i++) {
+    users[i].id -= 1;
+  }
+
+  userIdCounter--; 
+  users.sort((a, b) => a.id - b.id);
+
   displayUsers();
 
   document.getElementById('deleteId').value = '';
