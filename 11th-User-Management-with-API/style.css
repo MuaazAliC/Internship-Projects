@@ -1,127 +1,135 @@
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+const form = document.getElementById('userForm');
+const result = document.getElementById('result');
+const url = 'https://jsonplaceholder.typicode.com/posts';
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      padding: 20px;
-      overflow-x: hidden; 
-    }
+let users = [];
+let userIdCounter = 1;
+let availableIds = []; 
 
-    .main {
-      display: flex;
-      flex-direction: row; 
-      justify-content: space-between;
-      gap: 20px;
-      height: 90vh;
-      overflow-x: hidden;
-      overflow-y: auto; 
-    }
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    .innercontainer {
-      flex: 1;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      overflow-y: auto;
-    }
+  if (users.length >= 10) {
+    alert("You can only add up to 10 users.");
+    return;
+  }
 
-    h2, h3 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2c3e50;
-      font-weight: 600;
-    }
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
 
-    h2 i {
-      color: #3498db;
-      margin-right: 10px;
-    }
+  const newId = availableIds.length > 0 ? availableIds.shift() : userIdCounter++;
 
-    form,
-    #updateId,
-    #updateName,
-    #updateEmail,
-    #deleteId,
-    button {
-      display: block;
-      margin: 10px auto;
-      width: 100%;
-      max-width: 400px;
-    }
+  const userData = { id: newId, name, email };
 
-    input[type="text"],
-    input[type="email"],
-    input[type="number"] {
-      padding: 12px 15px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      transition: 0.3s ease;
-      width: 100%;
-      margin-bottom: 1em;
-    }
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData)
+    });
 
-    input:focus {
-      border-color: #3498db;
-      outline: none;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
-    }
+    const data = await res.json();
+    data.id = newId;
+    users.push(data);
 
-    button {
-      padding: 12px 18px;
-      font-size: 16px;
-      background: #3498db;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+    displayUsers();
+    form.reset();
+  } catch (err) {
+    result.innerHTML = `Error: ${err.message}`;
+  }
+});
 
-    button:hover {
-      background: #2980b9;
-    }
+function displayUsers() {
+  result.innerHTML = `<h3>Stored Data</h3>`;
+  users.forEach(user => {
+    result.innerHTML += `
+      <div class="user">
+        <strong>ID:</strong> ${user.id}<br>
+        <strong>Name:</strong> ${user.name}<br>
+        <strong>Email:</strong> ${user.email}
+      </div>`;
+  });
+}
 
-    #result {
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #fff;
-      min-height: 100px;
-    }
+const updateForm = document.getElementById('updateForm');
+const showUpdateFormBtn = document.getElementById('showUpdateFormBtn');
 
-    .user {
-      background: #ecf0f1;
-      margin: 10px 0;
-      padding: 12px 15px;
-      border-radius: 6px;
-    }
+showUpdateFormBtn.addEventListener('click', () => {
+  updateForm.style.display = updateForm.style.display === 'none' ? 'block' : 'none';
+});
 
-    @media (max-width: 768px) {
-      .main {
-        flex-direction: column;
-      }
+const deleteForm = document.getElementById('deleteForm');
+const showDeleteFormBtn = document.getElementById('showDeleteFormBtn');
 
-      .innercontainer {
-        width: 100%;
-      }
+showDeleteFormBtn.addEventListener('click', () => {
+  deleteForm.style.display = deleteForm.style.display === 'none' ? 'block' : 'none';
+});
 
-      input, button {
-        width: 95%;
-      }
+async function updateUser() {
+  const id = parseInt(document.getElementById('updateId').value);
+  const name = document.getElementById('updateName').value;
+  const email = document.getElementById('updateEmail').value;
 
-      h2 {
-        font-size: 20px;
-      }
+  if (!id) {
+    alert("Please enter a valid ID to update.");
+    return;
+  }
 
-      .user-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
+  const userIndex = users.findIndex(u => u.id === id);
+  if (userIndex === -1) {
+    alert("User not found!");
+    return;
+  }
+
+  const existingUser = users[userIndex];
+  const updatedData = {
+    name: name || existingUser.name,
+    email: email || existingUser.email,
+  };
+
+  try {
+    const res = await fetch(`${url}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedData),
+    });
+
+    const data = await res.json();
+    users[userIndex] = { ...existingUser, ...updatedData };
+    displayUsers();
+
+    updateForm.style.display = 'none';
+    document.getElementById('updateId').value = '';
+    document.getElementById('updateName').value = '';
+    document.getElementById('updateEmail').value = '';
+  } catch (err) {
+    result.innerHTML = `Error: ${err.message}`;
+  }
+}
+
+function deleteUser() {
+  const id = parseInt(document.getElementById('deleteId').value);
+  if (!id) {
+    alert("Please enter a valid ID to delete.");
+    return;
+  }
+
+  const index = users.findIndex(user => user.id === id);
+  if (index === -1) {
+    alert("User not found!");
+    return;
+  }
+
+  
+  availableIds.push(users[index].id);
+  availableIds.sort((a, b) => a - b); 
+
+  users.splice(index, 1);
+  displayUsers();
+
+  document.getElementById('deleteId').value = '';
+  deleteForm.style.display = 'none';
+}
+
+window.updateUser = updateUser;
+window.deleteUser = deleteUser;
