@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Functional Log in Page </title>
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main">
+    <div id="loader" class="loader">Loading...</div>
+    <div id="errorBox" class="error-box"></div>
+    <div id="ok" class="ok"></div>
+
+    
+    <div class="container login" id="loginForm">
+      <h2>Login</h2>
+      <div class="inputs">
+        <input type="email" placeholder="Email" id="loginEmail">
+      </div>
+      <div class="inputs" style="position: relative;">
+        <input type="password" placeholder="Password" id="loginPassword" style="padding-right: 30px;">
+        <i id="togglePassword" class="fa-regular fa-eye" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+      </div>
+    </div>
+
+    
+    <div id="registerForm_design">
+      <div class="container register" id="registerForm">
+        <div class="inputs"><input type="text" placeholder="User Name" id="User_Name"></div>
+        <div class="inputs"><input type="text" placeholder="First Name" id="First_Name"></div>
+        <div class="inputs"><input type="text" placeholder="Last Name" id="Last"></div>
+        <div class="inputs"><input type="text" placeholder="Phone Number" id="Phone_number"></div>
+        <div class="inputs"><input type="email" placeholder="Email" id="Email"></div>        
+        <div class="inputs" style="position: relative;">
+          <input type="password" placeholder="Password" id="Password" style="padding-right: 30px;">
+          <i id="toggle_Password" class="fa-regular fa-eye" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+        </div>
+
+        
+        <div class="inputs" style="position: relative;">
+          <input type="password" placeholder="Confirm Password" id="Confirm_password" style="padding-right: 30px;">
+          <i id="toggle_C_Password" class="fa-regular fa-eye" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+        </div>
+
+        
+     
+      </div>
+         <div class="image_input">
+          <img id="profilePreview" class="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="Profile Picture"/>
+          
+          
+          <input type="file" id="profileInput" accept="image/*" hidden>
+
+          
+          <label for="profileInput" class="upload-label">
+            <i class="fa-solid fa-upload"></i> Upload Profile
+          </label>
+        </div>
+    </div>
+
+    
+    <div class="toggle-buttons" id="toggle-buttons">
+      <button id="showLogin">Sign In</button>
+      <button id="verification_btn">Verification</button>
+     
+      <p id="text1">Have an account? <span id="showlogin_text" style="color: blue; cursor: pointer;"><b>Sign in</b></span> here</p>
+      <p id="text2">Don't have an account? <span id="showRegister_text" style="color: blue; cursor: pointer;"><b>Sign up</b></span> here</p>
+    </div>
+
+     
+    <div id="verification">
+     <div class="inputs" style="margin-bottom: 1.4em;">
+      <input type="number" name="" id="otp_code" placeholder="OTP CODE">
+       </div>  
+       <button id="showRegister" style="margin-bottom: 1.4em;">Verify OTP</button>
+       <button id="Register" style="margin-bottom: 1.4em;">Register</button>
+       <p id="text1_2">Have an account? <span id="showlogin_text_2" style="color: blue; cursor: pointer;"><b>Sign in</b></span> here</p>
+      <style>
+        #otp_code{
+            text-align: center;
+            letter-spacing: 12px;
+        }
+      </style>
+        
+    </div>
+
+  </div>
+
+  
+  <script>
+    
+    function togglePasswordVisibility(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+
+      icon.addEventListener("click", () => {
+        const isPassword = input.type === "password";
+        input.type = isPassword ? "text" : "password";
+
+        icon.classList.toggle("fa-eye", !isPassword);
+        icon.classList.toggle("fa-eye-slash", isPassword);
+      });
+    }
+
+   
+    togglePasswordVisibility("loginPassword", "togglePassword");
+    togglePasswordVisibility("Password", "toggle_Password");
+    togglePasswordVisibility("Confirm_password", "toggle_C_Password");
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
