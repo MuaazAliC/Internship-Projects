@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #dfe9f3, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.main {
+  max-width: 900px;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+.toggle-buttons {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  width: 350px; /* Fixed width for large screens */
+  max-width: 90%; /* Responsive for smaller screens */
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1869ff, #0044cc);
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #155cd1, #003399);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(21, 92, 209, 0.4);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.inputs input,
+#profileInput {
+  width: 350px; /* Fixed width */
+  max-width: 90%; /* Responsive for smaller screens */
+  height: 45px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 14px;
+  font-size: 1em;
+  background-color: #f9f9f9;
+  transition: border 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.inputs input:focus {
+  outline: none;
+  border-color: #1869ff;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(24, 105, 255, 0.25);
+}
+
+.image_input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #1869ff;
+  box-shadow: 0 4px 10px rgba(24, 105, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(24, 105, 255, 0.3);
+}
+
+#profileInput {
+  width: 500px;
+  max-width: 90%;
+}
+
+.error-box,
+.ok {
+  width: 350px;
+  max-width: 90%;
+  padding: 12px 15px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.error-box {
+  background-color: #ffebee;
+  border-left: 5px solid #d32f2f;
+  color: #b71c1c;
+}
+
+.ok {
+  background-color: #e8f5e9;
+  border-left: 5px solid #2e7d32;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+.loader {
+  display: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #1869ff, #0044cc);
+  border-radius: 5px;
+  color: white;
+}
+
+#registerForm_design {
+  display: flex;
+  justify-content: space-around;
+  gap: 5em;
+}
+
+#send_otp,
+.otp_input,
+#Verify_otp {
+  display: none;
+}
+
+#register{
+  display: none;
+}
+
+span:hover {
+  text-decoration: underline;
+  color: #155cd1;
+  cursor: pointer;
+}
+
+/* Hide original file input */
+#profileInput {
+  display: none;
+}
+
+/* Custom upload button */
+.upload-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #1869ff, #0044cc);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.upload-label:hover {
+  background: linear-gradient(135deg, #155cd1, #003399);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(24, 105, 255, 0.3);
+}
+
+.upload-label i {
+  margin-right: 8px;
+}
+
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+  #registerForm_design {
+    flex-direction: column;
+    gap: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 20px;
+  }
+
+  .profile-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  button,
+  .inputs input,
+  #profileInput,
+  .error-box,
+  .ok {
+    width: 100%;
+  }
+}
