@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .password-wrapper input {
+            width: 100%;
+            padding-right: 35px;
+        }
+        .password-wrapper i {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="loader" class="loader">Loading...</div>
+    <div id="errorBox" class="error-box"></div>
+    <div id="ok" class="ok"></div>
+
+    <h2>Login</h2>
+
+    <input type="text" id="login_email" placeholder="Email or Username">
+
+    <div class="password-wrapper">
+        <input type="password" placeholder="Password" id="login_password" class="password">
+        <i id="toggle_Password" class="fa-regular fa-eye"></i>
+    </div>
+
+    <button id="login_btn">Login</button>
+    <p><a href="forget_password.html">Forgot Password?</a></p>
+    <p><a href="register.html">Create Account</a></p>
+</div>
+
+
+<script>
+    function togglePasswordVisibility(inputId, iconId) {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+
+        icon.addEventListener("click", () => {
+            const isPassword = input.type === "password";
+            input.type = isPassword ? "text" : "password";
+
+            icon.classList.toggle("fa-eye", !isPassword);
+            icon.classList.toggle("fa-eye-slash", isPassword);
+        });
+    }
+
+   
+    togglePasswordVisibility("login_password", "toggle_Password");
+</script>
+
+<script>
+ 
+ const url = "Your API"; 
+  let registerToken = ""; 
+
+  function ShowOK(message) {
+    const okBox = document.getElementById("ok");
+    okBox.textContent = message;
+    okBox.style.display = "block";
+    setTimeout(() => { okBox.style.display = "none"; }, 3000);
+  }
+
+  function showError(message) {
+    const errorBox = document.getElementById("errorBox");
+    errorBox.textContent = message;
+    errorBox.style.display = "block";
+    setTimeout(() => { errorBox.style.display = "none"; }, 3000);
+  }
+
+  function showLoader(show) {
+    const loader = document.getElementById("loader");
+    loader.style.display = show ? "block" : "none";
+  }
+
+  const loginEmail = document.getElementById("login_email");
+  const loginPassword = document.getElementById("login_password");
+  const loginBtn = document.getElementById("login_btn");
+
+  document.getElementById("login_btn").addEventListener("click", async () => {
+    await signin(loginEmail, loginPassword);
+  });
+
+  async function ChangePassword(password, confirm_password)  {
+    try {
+      const res = await fetch(`${url}profile/password/reset`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          password: password.value.trim(),
+          confirm_password: confirm_password.value.trim(),
+          verification_token: registerToken,
+          role: "user",
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        ShowOK("Password changed successfully.");
+      } else {
+        showError(data.message || "Failed to change password.");
+      }
+    } catch (err) {
+      showError("Error changing password.");
+    } finally {
+      showLoader(false);
+    }
+  }
+
+  async function signin(login_email , login_password) {
+    if (!login_password.value.trim() || !login_email.value.trim()) {
+      return showError("Please enter email and password.");
+    }
+
+    showLoader(true);
+    try {
+      const res = await fetch(`${url}auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: login_email.value.trim(),
+          password: login_password.value.trim(),
+          role: "user",
+        }),
+      });
+
+      const data = await res.json();
+      if (res.status === 200) {
+        ShowOK("Login successful.");
+      }
+      else{
+        showError(data.message || "Login failed.");
+      }
+    } catch (err) {
+      showError("Error logging in.");
+    } finally {
+      showLoader(false);
+    }
+  }
+</script>
+
+</body>
+</html>
