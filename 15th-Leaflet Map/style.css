@@ -1,63 +1,94 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+const my_loc = document.getElementById("user_location");
+const mapDiv = document.getElementById("map");
+
+const Lahore = { lat: 31.5497, lng: 74.3436 };
+const Karachi = { lat: 24.8607, lng: 67.0011 };
+const Islamabad = { lat: 33.6844, lng: 73.0479 };
+const Okara = { lat: 30.8104, lng: 73.6840 };
+
+const Lahore_btn = document.getElementById("lahore");
+const Karachi_btn = document.getElementById("kar");
+const Islamabad_btn = document.getElementById("isl");
+const Okara_btn = document.getElementById("okara");
+
+const list = document.getElementById("list");
+
+let mapInstance;
+let userMarker;
+let userLocation;
+let routeControl;
+
+
+function clearRoute() {
+    if (routeControl) {
+        mapInstance.removeControl(routeControl);
+        routeControl = null;
+    }
 }
 
-body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #232526 0%, #414345 100%);
-    color: #f8f8f8;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1em;
-    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-    overflow: hidden;
+function showRouteToCity(cityCoords, cityName) {
+    if (!userLocation) {
+        alert("Please enable location and open the map first.");
+        return;
+    }
+
+    clearRoute();
+
+    routeControl = L.Routing.control({
+        waypoints: [
+            L.latLng(userLocation[0], userLocation[1]),
+            L.latLng(cityCoords.lat, cityCoords.lng)
+        ],
+        routeWhileDragging: false,
+        addWaypoints: false,
+        draggableWaypoints: false,
+        showAlternatives: false,
+        lineOptions: {
+            styles: [{ color: '#ff6600', weight: 5, opacity: 0.8 }]
+        },
+        createMarker: function (i, waypoint) {
+            return L.marker(waypoint.latLng).bindPopup(
+                i === 0 ? "📍 You are here" : `📌 ${cityName}`
+            );
+        }
+    }).addTo(mapInstance);
 }
 
-h1 {
-    margin-top: 2em;
-    font-size: 2.5em;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}
 
-button {
-    background: linear-gradient(90deg, #ff5353 0%, #ff8c53 100%);
-    width: 130px;
-    height: 40px;
-    border-radius: 25px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: 600;
-    box-shadow: 0 4px 16px rgba(255, 83, 83, 0.15);
-    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
-}
+my_loc.addEventListener("click", () => {
+    const isMapVisible = mapDiv.style.display === "block";
+    list.style.display = isMapVisible ? "none" : "flex";
+    mapDiv.style.display = isMapVisible ? "none" : "block";
+    my_loc.innerHTML = !isMapVisible ? "Hide Map" : "My Location";
 
-button:hover {
-    background: linear-gradient(90deg, #ff2727 0%, #ff7e27 100%);
-    transform: scale(1.08) translateY(-2px);
-    box-shadow: 0 8px 24px rgba(255, 83, 83, 0.25);
-}
+    if (!isMapVisible) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            userLocation = [lat, lon];
 
-#map {
-    width: 90vw;
-    max-width: 900px;
-    height: 60vh;
-    border: 3px solid #fff;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15), 0 1.5px 6px rgba(0,0,0,0.25);
-    display: none;
-    overflow: hidden;
-    margin-bottom: 2em;
-    background: #222;
-    transition: box-shadow 0.3s;
-}
+            if (!mapInstance) {
+                mapInstance = L.map('map').setView(userLocation, 6);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(mapInstance);
+                userMarker = L.marker(userLocation).addTo(mapInstance)
+                    .bindPopup("📍 You are here!").openPopup();
+            } else {
+                mapInstance.setView(userLocation, 6);
+                userMarker.setLatLng(userLocation);
+            }
+        }, (error) => {
+            alert("Unable to retrieve location");
+            console.error(error);
+        });
+    } else {
+        clearRoute();
+    }
+});
 
-#map:active, #map:focus-within {
-    box-shadow: 0 0 40px 8px #ff5353, 0 8px 32px rgba(255, 255, 255, 0.15);
-}
+
+Lahore_btn.addEventListener("click", () => showRouteToCity(Lahore, "Lahore"));
+Karachi_btn.addEventListener("click", () => showRouteToCity(Karachi, "Karachi"));
+Islamabad_btn.addEventListener("click", () => showRouteToCity(Islamabad, "Islamabad"));
+Okara_btn.addEventListener("click", () => showRouteToCity(Okara, "Okara"));
