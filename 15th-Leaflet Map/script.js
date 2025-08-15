@@ -1,40 +1,116 @@
-const my_loc = document.getElementById("user_location");
-const mapDiv = document.getElementById("map");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-let mapInstance; 
-let marker; 
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+   
+}
 
-my_loc.addEventListener("click", () => {
+h1 {
+    color: white;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+button {
+    background: linear-gradient(90deg, #ff5353 0%, #ff8c53 100%);
+    width: 130px;
+    height: 40px;
+    border-radius: 25px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(255, 83, 83, 0.15);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ff2727 0%, #ff7e27 100%);
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 83, 83, 0.25);
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#lahore {
+    background: linear-gradient(90deg, #28a745 0%, #6cc070 100%);
+}
+#lahore:hover {
+    background: linear-gradient(90deg, #6cc070 100%, #28a745 0%);
+}
+
+
+#okara {
+    background: linear-gradient(90deg, #ff9800 0%, #ffc107 100%);
+}
+
+#okara:hover {
+    background: linear-gradient(90deg, #ffc107 100%, #ff9800 0%);
+}
+
+
+#kar {
+    background: linear-gradient(90deg, #2196f3 0%, #03a9f4 100%);
+}
+
+#kar:hover {
+    background: linear-gradient(90deg, #03a9f4 100%, #2196f3 0%);
+}
+
+
+#isl {
+    background: linear-gradient(90deg, #9c27b0 0%, #ba68c8 100%);
+}
+
+#isl:hover {
+    background: linear-gradient(90deg, #ba68c8 100%, #9c27b0 0%);
+}
+
+
+#map {
+    width: 90vw;
+    max-width: 900px;
+    height: 60vh;
+    border: 3px solid #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15), 0 1.5px 6px rgba(0,0,0,0.25);
+    display: none;
+    overflow: hidden;
   
-    mapDiv.style.display = mapDiv.style.display === "block" ? "none" : "block";
-    my_loc.innerHTML = mapDiv.style.display === "block" ? "Hide Map" : "My Location";
+    background: #222;
+    transition: box-shadow 0.3s;
+}
 
-    if (mapDiv.style.display === "block") {
-        navigator.geolocation.getCurrentPosition((position) => {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            console.log(`Latitude: ${lat}, Longitude: ${lon}`);
+#map:active, #map:focus-within {
+    box-shadow: 0 0 40px 8px #ff5353, 0 8px 32px rgba(255, 255, 255, 0.15);
+}
 
-           
-            if (!mapInstance) {
-                mapInstance = L.map('map').setView([lat, lon], 15);
-
-               
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; OpenStreetMap contributors'
-                }).addTo(mapInstance);
-
-               
-                marker = L.marker([lat, lon]).addTo(mapInstance)
-                    .bindPopup("You are here!").openPopup();
-            } else {
-               
-                mapInstance.setView([lat, lon], 15);
-                marker.setLatLng([lat, lon]);
-            }
-        }, (error) => {
-            alert("Unable to retrieve location");
-            console.error(error);
-        });
-    }
-});
+@media (max-width: 600px) {
+  
+    .leaflet-routing-alternatives-container{
+    display: none;
+}
+}
