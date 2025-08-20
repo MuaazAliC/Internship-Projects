@@ -103,7 +103,7 @@ let stepsChart = new Chart(stepsCtx, {
 });
 
 
-// 🔥 Update chart based on dropdown selection
+
 function updateStepsChart(period) {
   const selected = document.getElementById("selectedPeriod");
   
@@ -130,3 +130,4 @@ function updateStepsChart(period) {
 
   stepsChart.update();
 }
+
