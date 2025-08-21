@@ -1,7 +1,13 @@
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-/* Example usage */
+:root {
+  --font-sans: "Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --sidebar-width: clamp(200px, 18vw, 240px);
+  --gap: 1rem;
+}
 
 * {
   margin: 0;
@@ -10,48 +16,59 @@
 }
 
 body { 
-    font-family: 'Poppins', 'Nunito Sans', 'Lato','Inter', sans-serif;
+  font-family: 'Poppins', 'Nunito Sans', 'Lato','Inter', sans-serif;
   background-color: #f5fffc;
   display: flex;
   min-height: 100vh;
-  gap: 15px;
-  padding: 20px;
-
-
+  gap: var(--gap);
+  padding: 1.5rem;
+  overflow-x: hidden;
 }
 
 /* Sidebar */
 nav {
-    font-family: 'Nunito Sans', 'Poppins', 'Lato','Inter', sans-serif;
+  font-family: var(--font-sans);
   background-color: #1E1E1E;
-  width: 239px;             
-  min-width: 190px;
+  width: var(--sidebar-width);
+  min-height: 550px;
   height: 95vh;
-  min-height: 600px;
-    position: fixed;
-    z-index: 1000;
-  border-radius: 15px;
-  color: #868686;
-  padding: 10px;
+
+  position: fixed;
+  top: 2vh; 
+  left: 2vh; 
+  bottom: 2vh; 
+  z-index: 1000;
+
+  border-radius: 18px;
+  color: #cfcfcf; 
+  padding: 1rem; 
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-shrink: 0;            
-}
-.heading svg{
-    width: 200px;
-   height: auto;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 10px;
-}
-.nav_main{
-    display: flex;
-    flex-direction: column;
-    gap: 40px ;
+
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25); 
+  transition: background 0.3s ease;
 }
 
+nav:hover {
+  background-color: #252525;
+}
 
+.heading svg {
+  width: 200px;
+  height: auto;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.nav_main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 
 .list ul,
 .end ul {
@@ -61,12 +78,14 @@ nav {
   flex-direction: column;
   gap: 10px;
 }
+
 nav svg {
   width: 20px;
   height: 18px;
-  fill: #868686; /* default */
+  fill: #868686; 
   transition: fill 0.2s;
 }
+
 
 .list ul li,
 .end ul li {
@@ -79,56 +98,39 @@ nav svg {
   transition: background 0.2s, color 0.2s;
   display: flex;
   align-items: center;
-   gap: 10px;
+  gap: 10px;
 }
 
-/* Hover */
-.list ul li:hover {
-  background-color: #2fef10;
-  color: black !important;
-}
-.list ul li:hover svg {
-  fill: black;   /* ✅ changes icon color on hover */
-}
-
-/* Active */
 .list ul li.active {
   background-color: #2fef10;
   color: black !important;
 }
 .list ul li.active svg {
-  fill: black;   /* ✅ keeps active icon black */
+  fill: black;  
 }
 
-/* End section hover */
-.end ul li:hover {
-  background-color: white;
-  color: black !important;
-}
-.end ul li:hover svg {
-  fill: black;
-}
-/* Main Section */
+
+/* Main Layout */
 main {
-    margin-left: 250px;
+  margin-left: calc(var(--sidebar-width) + 5px);
   flex: 1;
   background-color: #f5fffc;
   border-radius: 15px;
-  padding: 10px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
   height: 95vh;
-  
+  min-width: 0;
 }
 
-/* Top Section */
 .top {
+  font-family: var(--font-sans);
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  
+  height: 80px;
 }
 
 .notification {
@@ -153,7 +155,6 @@ main {
   background: red;
 }
 
-/* User Section */
 .second_half {
   display: flex;
   align-items: center;
@@ -173,18 +174,20 @@ main {
   object-fit: cover;
 }
 
-/* Dashboard Boxes */
+/* Users section */
 .users {
   display: flex;
   flex-wrap: wrap;
-   justify-content: space-between;
+  gap: 1rem;
   width: 100%;
-  height: 30%;
 }
 
 .box {
-   width: 32%;
-   height: 80px;
+  flex: 1 1 calc(33% - 1rem);
+   width: 30%;
+  font-size: 1.25rem;
+  font-weight: 600;
+  height: 80px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -193,46 +196,44 @@ main {
   align-items: center;
   gap: 10px;
 }
+
 .box svg {
   width: 50px;
   height: 50px;
-  
 }
 
+/* Charts */
 .charts-wrapper {
-  border-radius: 20px;
+  border-radius: 10px;
   width: 100%;
 }
 
-/* Flex container for 2 child charts */
 .charts {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 1rem;
   width: 100%;
-  height: 300px;
+  height: auto;
 }
 
-/* Each chart box */
 .chart_par {
+  flex: 1 1 calc(50% - 1rem);
+  min-width: 320px;
+  height: 300px;
+  font-family: 'Nunito Sans', 'Poppins', 'Lato','Inter', sans-serif;
   padding: 10px;
   font-size: 15px;
   font-weight: 900;
-  width: 49%;
-  height: 100%;
-  max-height: 300px;
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 9px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
 }
 
 .chart-container {
-    width: 100%;
-    height: 90%;
-  
+  width: 100%;
+  height: 90%;
 }
 
 canvas {
@@ -240,7 +241,6 @@ canvas {
   height: 100% !important;
 }
 
-/* Chart header + dropdown */
 .chart-header {
   display: flex;
   justify-content: space-between;
@@ -249,10 +249,9 @@ canvas {
   margin-bottom: 10px;
 }
 
-/* Dropdown */
 .dropdown {
-    margin-right: 5px;
-    width: 100px;
+  margin-right: 5px;
+  width: 100px;
   position: relative;
   display: inline-block;
 }
@@ -273,6 +272,7 @@ canvas {
 }
 
 .dropdown-content {
+  margin-top: 0.5px;
   display: none;
   position: absolute;
   background: #ffffff;
@@ -299,42 +299,35 @@ canvas {
   display: block;
 }
 
-/* Performance Record Section */
-/* Performance Record Section */
+/* Records */
 .performance_record {
-    width: 100%;
-    height: auto; 
+  width: 100%;
+  height: auto; 
   border-radius: 12px;
-  padding: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin: 0 auto; 
-  background: #fff;
 }
 
 .record-title {
-  margin-bottom: 12px;
-  font-size: 20px;
-  font-weight: 600;
+  font-family: 'Nunito Sans', 'Poppins', 'Lato','Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
   color: #222;
-  background-color: #f5fffc;
-  padding: 8px 12px;
+  margin-bottom: 4px;
   border-radius: 6px;
 }
 
 .record-table {
   border-radius: 10px;
   border: 1px solid #e5e5e5;
-  overflow: hidden; /* ensures rounded corners apply */
+  overflow: hidden; 
 }
 
-/* Header Row */
 .header {
   background-color: #009865;
   height: 55px;
   color: white;
   font-weight: 600;
   font-size: 18px;
-  display: flex;              /* ✅ flexbox */
+  display: flex;              
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
@@ -343,28 +336,25 @@ canvas {
   z-index: 2;
 }
 
-/* Body Rows */
 .info,
 .winner_record {
-  display: flex;              /* ✅ flexbox */
+  display: flex;              
   justify-content: space-between;
   align-items: center;
   padding: 12px 15px;
   font-size: 15px;
 }
 
-/* Make each column equal width */
 .header > div,
 .info > div,
 .winner_record > div {
-  flex: 1;              /* all equal width */
-  text-align: center;   /* center text */
+  flex: 1;              
+  text-align: center;   
 }
 
-/* Scrollable body */
 .record-body {
   max-height: 300px;
-  overflow-y: auto; /* ✅ only one scrollbar */
+  overflow-y: auto; 
   scrollbar-width: thin;
   scrollbar-color: #009865 #f5fffc;
 }
@@ -378,7 +368,6 @@ canvas {
   border-radius: 6px;
 }
 
-/* Alternating + Hover */
 .winner_record {
   background: #fafafa;
   transition: background 0.2s;
@@ -393,16 +382,50 @@ canvas {
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   body {
     flex-direction: column;
     padding: 10px;
-    overflow: auto;
+  }
+
+ 
+  nav {
+    position: relative;
+    width: 97%;
+
   }
 
   
+  .list ul,
+  .end ul {
+   
+    gap: 5px;
+    margin-top: 0;
+  }
+
+  .list ul li,
+  .end ul li {
+    font-size: 13px;
+    height: auto;
+    padding: 6px 10px;
+  }
+
+
+
   main {
+    margin-left: 0;
     width: 100%;
-    padding: 15px;
+  }
+
+  .charts {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .chart_par {
+    width: 100%;
+    min-width: unset;
+    height: auto;
   }
 }
