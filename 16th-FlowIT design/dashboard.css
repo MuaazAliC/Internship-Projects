@@ -264,6 +264,15 @@ canvas {
   border-radius: 6px;
   cursor: pointer;
   font-size: 12px;
+  width: 100px;
+  text-align: center;
+}
+
+.dropbtn svg {
+  width: 14px;
+  height: 9px;
+  margin-left: 10px;
+  
 }
 
 .dropbtn:hover {
