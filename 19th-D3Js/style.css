@@ -1,0 +1,48 @@
+  body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #111;
+      color: white;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .container {
+      display: flex;
+      height: calc(100vh - 60px);
+      padding: 10px;
+      justify-content: space-around;  
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .left, .right {
+     
+      display: flex;
+      justify-content:center;
+      align-items: center;
+    
+    }
+
+    svg {
+      background: #222;
+      border: 1px solid #444;
+    }
+
+    .bar text {
+      font-size: 12px;
+      fill: white;
+    }
+
+    .tooltip {
+      position: absolute;
+      background: #333;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      pointer-events: none;
+      font-size: 13px;
+    }
