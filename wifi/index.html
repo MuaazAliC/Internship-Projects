@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wifi Connector</title>
-   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="shortcut icon"
           href="data:image/webp;base64,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"
         type="image/x-icon">
@@ -37,9 +37,15 @@
     <option value="Network3">Network3</option>
   </select>
   <label for="password" style="display: block; margin-bottom: 8px; font-weight: bold; color: #555;">Password:</label>
-  <input type="password" id="password" name="password" 
-         style="width: 90%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; 
-                border-radius: 8px; font-size: 1rem;">
+  <div style="position: relative;  margin-bottom: 20px;">
+    <input type="password" id="password" name="password" 
+           style="width: 79%; padding: 10px 40px 10px 10px; border: 1px solid #ccc; 
+                  border-radius: 8px; font-size: 1rem;">
+    <span id="togglePassword" style="position: absolute; top: 50%; right: 12px; transform: translateY(-50%); cursor: pointer; color: #888;">
+      <i class="fa-solid fa-eye" id="eyeIcon"></i>
+    </span>
+  </div>
+
 
   <input type="submit" value="Connect" 
         style="width: 100%; padding: 12px; background: #4CAF50; color: white; border: none; 
@@ -63,6 +69,16 @@
   }
   updateHeaderWidth();
   window.addEventListener("resize", updateHeaderWidth);
+
+   const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+    const eyeIcon = document.getElementById('eyeIcon');
+    togglePassword.addEventListener('click', function () {
+      const type = passwordInput.type === 'password' ? 'text' : 'password';
+      passwordInput.type = type;
+      eyeIcon.classList.toggle('fa-eye');
+      eyeIcon.classList.toggle('fa-eye-slash');
+    });
 </script>
   
 </body>
