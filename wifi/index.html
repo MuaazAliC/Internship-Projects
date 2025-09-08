@@ -61,9 +61,13 @@
     <script>
   function updateHeaderWidth() {
     const header = document.getElementById("myHeader");
-    if (window.innerWidth >= 800) {
-      header.style.width = "28vw";
-    } else {
+    if (window.innerWidth >= 1030) {
+      header.style.width = "20vw";
+    }
+    else if(window.innerWidth >= 600) {
+      header.style.width = "50vw";
+    }
+     else {
       header.style.width = "90vw";
     }
   }
