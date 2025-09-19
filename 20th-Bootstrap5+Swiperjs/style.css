@@ -17,27 +17,27 @@ body {
 }
 
 
-    .swiper {
-      margin-top: -30px;
-      width: 100%; 
-      min-height: 87dvh;
-      padding: 40px 0; 
-    }
+ .swiper {
+  margin-top: -30px;
+  width: 100%; 
+  min-height: 87dvh;
+  padding: 40px 0; 
+}
 
-    .swiper-slide {
-        display: flex;
-        flex-direction: column;
-      max-width: 80%;
-      height: 87dvh;
-      background: #F4F1FF;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 18px;
-      padding: 20px;
-      border-radius: 50px;
-    }
+.swiper-slide {
+  flex: 0 0 auto;   
+  width: 80%;
+  height:fit-content;   
+  background: #F4F1FF;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 
     /* Custom links */
   .custom-links {
