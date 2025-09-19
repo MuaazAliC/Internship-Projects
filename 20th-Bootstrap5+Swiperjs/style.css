@@ -19,9 +19,8 @@ body {
 
     .swiper {
       margin-top: -30px;
-      width: 100%;
-      min-height: 87%;
-      height: fit-content;
+      width: 100%; 
+      min-height: 87dvh;
       padding: 40px 0; 
     }
 
@@ -29,8 +28,7 @@ body {
         display: flex;
         flex-direction: column;
       max-width: 80%;
-      min-height: 100%;
-      height: fit-content; 
+      height: 87dvh;
       background: #F4F1FF;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       display: flex;
@@ -45,7 +43,6 @@ body {
   .custom-links {
  margin-top: 10px;
   display: flex;
- 
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -366,6 +363,7 @@ text-align: center;
     justify-content: space-around;
     width: 100%;
     height: fit-content;
+    margin:  auto;
 }
 
 .box{
