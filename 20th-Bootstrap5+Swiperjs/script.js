@@ -44,15 +44,15 @@
       });
     });
 
-const slider = document.getElementById("rangeSlider");
+ const slider = document.getElementById("rangeSlider");
     const amount = document.getElementById("amount");
     const scale = document.getElementById("scale");
 
-    
     const min = parseInt(slider.min);
     const max = parseInt(slider.max);
     const step = parseInt(slider.step);
 
+   
     for (let i = min; i <= max; i += step) {
       const tick = document.createElement("div");
       tick.classList.add("tick");
@@ -70,11 +70,20 @@ const slider = document.getElementById("rangeSlider");
       scale.appendChild(tick);
     }
 
-   
     function calculatePrice(value) {
       return (value * 0.1498).toFixed(2);
     }
 
+   
+    function updateSliderFill(value) {
+      const percent = ((value - min) / (max - min)) * 100;
+      slider.style.background = `linear-gradient(to right, #3A00B2 ${percent}%, #ddd ${percent}%)`;
+    }
+
+   
+    updateSliderFill(slider.value);
+
     slider.addEventListener("input", () => {
       amount.textContent = calculatePrice(slider.value) + " €";
+      updateSliderFill(slider.value);
     });
